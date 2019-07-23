@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="log.context.name" value="ASSISTANT"/>
+    <property name="log.charset" value="UTF-8"/>
+    <property name="log.pattern" value="[%-5level] %date --%thread-- [%logger{30}] %msg %n "/>
+
+    <appender name="stdout" class="com.bosssoft.cloud.monitor.component.log.CustomizeLogbackConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${log.pattern}</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="bs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/bs.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter"><!--临界值过滤器-->
+            <level>DEBUG</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--后缀改成zip就是压缩，去掉就不压-->
+            <fileNamePattern>logs/bs.%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+            <MaxHistory>90</MaxHistory><!--其实是保留的历史文件个数！！-->
+            <TimeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${log.pattern}</Pattern>
+        </encoder>
+    </appender>
+    <!--perf4j配置-->
+    <!--<appender name="statistics" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            &lt;!&ndash;日志文件输出的文件名 &ndash;&gt;
+            <fileNamePattern>logs/statistics.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="coalescingStatistics" class="org.perf4j.logback.AsyncCoalescingStatisticsAppender">
+        <timeSlice>3600000</timeSlice>&lt;!&ndash;单位毫秒&ndash;&gt;
+        <appender-ref ref="statistics"/>
+    </appender>
+    <appender name="perf"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            &lt;!&ndash;后缀改成zip就是压缩，去掉就不压&ndash;&gt;
+            <fileNamePattern>logs/perf.%d{yyyy-MM-dd}-%i.log.zip</fileNamePattern>
+            <MaxHistory>90</MaxHistory>&lt;!&ndash;其实是保留的历史文件个数！！&ndash;&gt;
+            <TimeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <MaxFileSize>10MB</MaxFileSize>
+            </TimeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>${log.pattern}</Pattern>
+        </encoder>
+    </appender>
+    <logger name="org.perf4j.TimingLogger" level="INFO" additivity="false">
+        <appender-ref ref="coalescingStatistics" />
+        <appender-ref ref="perf" />
+    </logger>-->
+    <logger name="com.bs" level="DEBUG" additivity="false">
+        <appender-ref ref="bs"/>
+    </logger>
+    <logger name="org.apache" level="error" additivity="false">
+        <appender-ref ref="bs"/>
+        <appender-ref ref="stdout"/>
+    </logger>
+    <logger name="com.alibaba" level="error" additivity="false">
+        <appender-ref ref="bs"/>
+        <appender-ref ref="stdout"/>
+    </logger>
+    <logger name="com.bosssoft" level="DEBUG" additivity="false">
+        <appender-ref ref="bs"/>
+        <appender-ref ref="stdout"/>
+    </logger>
+    <root level="DEBUG">
+        <appender-ref ref="stdout"/>
+    </root>
+</configuration>

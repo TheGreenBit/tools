@@ -1,0 +1,31 @@
+com:
+  bs:
+    monitor:
+      port: 29999
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@192.168.1.199:1521/orcl
+    username: bs_monitor
+    password: 123456
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,slf4j
+    useGlobalDataSourceStat: true
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
+  checkConfigLocation: true
+  configuration:
+    jdbcTypeForNull: varchar
+    logImpl: org.apache.ibatis.logging.slf4j.Slf4jImpl
