@@ -4,7 +4,7 @@
     <property name="log.charset" value="UTF-8"/>
     <property name="log.pattern" value="[%-5level] %date --%thread-- [%logger{30}] %msg %n "/>
 
-    <appender name="stdout" class="com.bosssoft.cloud.monitor.component.log.CustomizeLogbackConsoleAppender">
+    <appender name="stdout" class="com.bird.netty.component.log.CustomizeLogbackConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>DEBUG</level>
         </filter>

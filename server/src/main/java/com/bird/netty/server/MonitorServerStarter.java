@@ -86,46 +86,5 @@ public class MonitorServerStarter {
         return handlerRegistry;
     }
 
-   /* @Component
-    public static class ReferenceCircleA implements InitializingBean {
-
-        @Autowired
-        ReferenceCircleB referenceCircleB;
-
-        @Autowired
-        private LoggerHandler loggerHandler;
-
-        @Value("${com.bs.monitor.port}")
-        private int port;
-
-        @Override
-        public void afterPropertiesSet() throws Exception {
-            System.out.println(referenceCircleB);
-        }
-    }
-
-    @Component
-    public static class ReferenceCircleB implements InitializingBean {
-        @Autowired
-        private ReferenceCircleC referenceCircleC;
-
-        @Override
-        public void afterPropertiesSet() throws Exception {
-            System.out.println(referenceCircleC);
-        }
-    }
-
-    @Component
-    public static class ReferenceCircleC implements InitializingBean {
-        @Autowired
-        private ReferenceCircleA referenceCircleA;
-
-
-        @Override
-        public void afterPropertiesSet() throws Exception {
-            System.out.println(referenceCircleA);
-            referenceCircleA.afterPropertiesSet();
-        }
-    }*/
 
 }
