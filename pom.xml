@@ -14,7 +14,7 @@
         <project.version>0.1</project.version>
         <sigar.version>1.6.4</sigar.version>
         <core-service.version>1.2.0-SNAPSHOT</core-service.version>
-        <netty-all.version>4.1.13.Final</netty-all.version>
+        <netty-all.version>4.1.42.Final</netty-all.version>
         <oc-service-iface.version>1.0.8-SNAPSHOT</oc-service-iface.version>
         <eips-iface.version>1.0.3-RELEASE</eips-iface.version>
         <core-service-invoice-sdk.version>0.0.1-SNAPSHOT</core-service-invoice-sdk.version>
