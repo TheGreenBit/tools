@@ -87,7 +87,7 @@
 
         <!--jdbc 相关-->
         <druid.version>1.1.12</druid.version>
-        <mysql.version>5.1.37</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <oracle.version>10.2.0.4.0</oracle.version>
         <!--pdf 相关-->
         <pdf-box.version>2.0.11</pdf-box.version>
