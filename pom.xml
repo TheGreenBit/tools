@@ -19,7 +19,7 @@
         <eips-iface.version>1.0.3-RELEASE</eips-iface.version>
         <core-service-invoice-sdk.version>0.0.1-SNAPSHOT</core-service-invoice-sdk.version>
         <electronicvoucher-sdk.version>0.0.4</electronicvoucher-sdk.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <mail.version>1.4.7</mail.version>
         <itext7-core.version>7.1.5</itext7-core.version>
 
